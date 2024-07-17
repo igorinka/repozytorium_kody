@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+string slowo_do_zaszyfrowania = "INTERPRETOWANIE";
+string slowo_zaszyfrowane = "";
+string slowo_odszyfrowane = "";
+//int klucz = 107;
+int klucz = 0;
+int min_wartosc = 65, max_wartosc = 90;
+int wartosc_znaku_do_zaszyfrowania =0;
+
+for(int litera_do_zaszyfrowania = 0; litera_do_zaszyfrowania < slowo_do_zaszyfrowania.size(); litera_do_zaszyfrowania++){
+    wartosc_znaku_do_zaszyfrowania = (int)slowo_do_zaszyfrowania[litera_do_zaszyfrowania];
+    while(klucz < 107/*klucz > 0*/){
+        if(wartosc_znaku_do_zaszyfrowania == max_wartosc)
+        {
+            wartosc_znaku_do_zaszyfrowania = min_wartosc;
+        }
+        else{
+            wartosc_znaku_do_zaszyfrowania = wartosc_znaku_do_zaszyfrowania + 1;
+        }
+        //klucz--;
+        klucz++;
+    }
+    slowo_zaszyfrowane += (char)wartosc_znaku_do_zaszyfrowania;
+       klucz = 0; 
+}
+cout << slowo_zaszyfrowane << endl;
+
+for(int litera_do_zaszyfrowania = 0; litera_do_zaszyfrowania < slowo_zaszyfrowane.size(); litera_do_zaszyfrowania++){
+    wartosc_znaku_do_zaszyfrowania = (int)slowo_zaszyfrowane[litera_do_zaszyfrowania];
+    while(klucz < 107){
+        if(wartosc_znaku_do_zaszyfrowania == min_wartosc)
+        {
+            wartosc_znaku_do_zaszyfrowania = max_wartosc;
+        }
+        else{
+            wartosc_znaku_do_zaszyfrowania = wartosc_znaku_do_zaszyfrowania - 1;
+        }
+        //klucz--;
+        klucz++;
+    }
+    slowo_odszyfrowane += (char)wartosc_znaku_do_zaszyfrowania;
+       klucz = 0; 
+}
+cout << slowo_odszyfrowane << endl;
+    return 0;
+}
