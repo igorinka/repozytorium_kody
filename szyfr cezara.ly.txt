@@ -1,0 +1,44 @@
+tekst = "INTERPRETOWANIE INTERPRETOWANIE"
+klucz = int(input("podaj klucz"))
+tekst_zaszyfrowany = ""
+litera_do_liczby = 0
+liczba_przesunieta = 0
+litera_zaszyfrowana_do_liczby = 0
+liczba_odszyfrowana = 0
+tekst_odszyfrowany = ""
+min_ascii = 65
+max_ascii = 90
+print(len(tekst))
+
+for indeks in range(len(tekst)):
+    print(tekst[indeks])
+    litera_do_liczby = ord(tekst[indeks])
+    print(litera_do_liczby)
+    if litera_do_liczby == 32:
+        tekst_zaszyfrowany += " "
+    else:
+        liczba_przesunieta = litera_do_liczby + klucz
+        print(liczba_przesunieta)
+    
+        while liczba_przesunieta > max_ascii:
+            liczba_przesunieta  -= 26
+        
+        print(chr(liczba_przesunieta))
+        tekst_zaszyfrowany += chr(liczba_przesunieta)
+        
+
+    
+    
+print(tekst_zaszyfrowany)
+
+for indeks in range(len(tekst_zaszyfrowany)):
+    litera_zaszyfrowana_do_liczby = ord(tekst_zaszyfrowany[indeks])
+    if litera_zaszyfrowana_do_liczby == 32:
+        tekst_odszyfrowany += " "
+    else:
+        liczba_odszyfrowana = litera_zaszyfrowana_do_liczby - klucz
+        while liczba_odszyfrowana < min_ascii:
+            liczba_odszyfrowana += 26
+        tekst_odszyfrowany += chr(liczba_odszyfrowana)
+    
+print(tekst_odszyfrowany)
